@@ -1,0 +1,15 @@
+[Unit]
+Description=Add desktop file to show IP address
+Wants=network-online.target
+After=network-online.target
+Wants=systemd-timesyncd.service
+After=systemd-timesyncd.service
+
+[Service]
+Type=simple
+Restart=on-failure
+User=pi
+ExecStart=/usr/bin/python3 /opt/aiy/ipaddress.py
+
+[Install]
+WantedBy=multi-user.target
